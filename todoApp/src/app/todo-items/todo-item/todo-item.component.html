@@ -1,0 +1,10 @@
+<div class="item-container" [class.completed]="item.completed">
+    <input
+      type="checkbox"
+      class="item-checkbox"
+      (click)="toggleItemCompletionStatus()"
+    />
+    <!-- <div class="item-checkbox-toggle"><div class="icon"></div></div> -->
+    <div class="item-name" (click)="toggleItemCompletionStatus()">{{ item.name }}</div>
+    <span (click)="removeTodo(item)"></span>
+  </div>

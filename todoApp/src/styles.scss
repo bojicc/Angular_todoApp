@@ -1,1 +1,228 @@
 /* You can add global styles to this file, and also import other style files */
+$light-theme-very-light-gray: hsl(0, 0%, 98%);
+$light-theme-very-light-grayish-blue: hsl(236, 33%, 92%);
+$light-theme-light-grayish-blue: hsl(233, 11%, 84%);
+$light-theme-dark-grayish-blue: hsl(236, 9%, 61%);
+$light-theme-very-dark-grayish-blue: hsl(235, 19%, 35%);
+
+$dark-theme-light-Grayish-blue-hover: hsl(236, 33%, 92%);
+$dark-theme-light-grayish-blue: hsl(234, 39%, 85%);
+$dark-theme-dark-grayish-blue: hsl(234, 11%, 52%);
+$dark-theme-very-dark-grayish-blue: hsl(233, 14%, 35%);
+$dark-theme-very-dark-grayish-blue-2: hsl(237, 14%, 26%);
+$dark-theme-very-dark-desaturated-blue: hsl(235, 24%, 19%);
+$dark-theme-very-dark-blue: hsl(235, 21%, 11%);
+
+$primary-bright-blue: hsl(220, 98%, 61%);
+
+/* 
+currently there is no support for css variables in media query
+@media (prefers-color-scheme: dark) {
+    wrapper {
+        --text-color: $dark-theme-dark-grayish-blue
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    wrapper {
+        --text-color: $light-theme-dark-grayish-blue
+    }
+} */
+
+:root {
+
+    --light-theme-very-light-gray: #{$light-theme-very-light-gray};
+    --light-theme-very-light-grayish-blue: #{$light-theme-very-light-grayish-blue};
+    --light-theme-light-grayish-blue: #{$light-theme-light-grayish-blue};
+    --light-theme-dark-grayish-blue: #{$light-theme-dark-grayish-blue};
+    --light-theme-very-dark-grayish-blue: #{$light-theme-very-dark-grayish-blue};
+
+    --dark-theme-light-grayish-blue: #{$dark-theme-light-grayish-blue};
+    --dark-theme-light-Grayish-blue-hover: #{$dark-theme-light-Grayish-blue-hover};
+    --dark-theme-dark-grayish-blue: #{$dark-theme-dark-grayish-blue};
+    --dark-theme-very-dark-grayish-blue: #{$dark-theme-very-dark-grayish-blue};
+    --dark-theme-very-dark-grayish-blue-2: #{$dark-theme-very-dark-grayish-blue-2};
+    --dark-theme-very-dark-desaturated-blue: #{$dark-theme-very-dark-desaturated-blue};
+    --dark-theme-very-dark-blue: #{$dark-theme-very-dark-blue};
+    
+
+
+
+    --primary-bright-blue: #{$primary-bright-blue};
+
+    
+    --fs-normal: 0.8125rem;
+
+    --fw-normal: 400;
+    --fw-heading: 700;
+    --clr-body: hsl(0, 0%, 100%);
+
+
+    --ff-all: 'Josefin Sans', Arial, Helvetica, sans-serif;
+}
+
+/* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+    line-height: 1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+    text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+    min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+    scroll-margin-block: 5ex;
+}
+
+.visually-hidden:not(:active):not(:focus) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+body {
+    font-family: var(--ff-all);
+    font-size: var(--fs-normal);
+    font-weight: var(--fw-normal);
+    --text-color: var(--clr-body);
+    --link-active-color: var(--primary-bright-blue);
+    transition: all 2s;
+    &.light-theme {
+        background-color: var(--light-theme-very-light-grayish-blue);
+        --todo-background-color: var(--light-theme-very-light-gray);
+        --todo-main-color: var(--light-theme-dark-grayish-blue);
+        --todo-item-color: var(--light-theme-very-dark-grayish-blue);
+        --todo-item-hover-color: var(--light-theme-very-dark-grayish-blue);
+        --todo-item-completed-color: var(--light-theme-light-grayish-blue);
+        background-image: url("/assets/bg-mobile-light.jpg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        .wrapper {
+            color: var(--todo-main-color);
+        }
+    }
+    
+    &.dark-theme {
+        background-color: var(--dark-theme-very-dark-blue);
+        --todo-background-color: var(--dark-theme-very-dark-desaturated-blue);
+        --todo-main-color: var(--dark-theme-very-dark-grayish-blue);
+        --todo-item-color: var(--dark-theme-light-grayish-blue);
+        --todo-item-hover-color: var(--dark-theme-light-Grayish-blue-hover);
+        --todo-item-completed-color: var(--dark-theme-very-dark-grayish-blue-2);
+        background-image: url("/assets/bg-mobile-dark.jpg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        .wrapper {
+            color: var(--todo-main-color);
+        }
+    }
+}
+
+body * {
+    transition: all 0.1s;
+}
+
+
+@media (min-width: 48em) {
+    body {
+        font-family: var(--ff-all);
+        font-size: var(--fs-normal);
+        font-weight: var(--fw-normal);
+        --text-color: var(--clr-body);
+        --link-active-color: var(--primary-bright-blue);
+        transition: all 2s;
+        .wrapper {
+            max-width: 48em;
+            margin: 0 auto;
+        }
+        &.light-theme {
+            background-image: url("/assets/bg-desktop-light.jpg");
+            background-repeat: no-repeat;
+            .wrapper {
+                
+            }
+        }
+        
+        &.dark-theme {
+            background-image: url("/assets/bg-desktop-dark.jpg");
+            background-repeat: no-repeat;
+            .wrapper {
+                
+            }
+        }
+    }
+}

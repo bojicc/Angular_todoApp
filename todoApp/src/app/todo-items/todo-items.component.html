@@ -1,0 +1,65 @@
+<div>
+    <div class="todo-item-input-container">
+      <form [formGroup]="todoInputForm" (ngSubmit)="onSubmit()">
+        <div
+          class="toggle-all-container"
+          [class.all-selected]="
+            completedTodos.length === todos.length && todos.length
+          "
+        >
+          <!-- <div class="toggle-all">
+        <div class="icon"></div>
+      </div> -->
+          <input
+            class="toggle-all-checkbox"
+            type="checkbox"
+            [disabled]="!todos.length"
+            (change)="toggleAll($event)"
+            [checked]="completedTodos.length === todos.length && todos.length"
+          />
+        </div>
+        <label class="visually-hidden" for="create-todo" aria-hidden="true"
+          >Create a Todo</label
+        >
+        <input
+          [autofocus]="true"
+          type="text"
+          id="create-todo"
+          class="todo-item-input"
+          name="create-todo"
+          formControlName="name"
+          [placeholder]="'Create a new todo...'"
+        />
+      </form>
+    </div>
+  
+    <div class="todo-item-container">
+      <div class="todo-item" *ngFor="let item of filteredTodos">
+        <app-todo-item
+          [item]="item"
+          (remove)="removeTodo($event)"
+        ></app-todo-item>
+      </div>
+    </div>
+    <div *ngIf="todos.length" class="items-info">
+      <span class="items-left"> {{ activeTodos.length }} items left</span>
+      <div class="items-manage">
+        <span
+          (click)="statusFilter = 'all'"
+          [class.active]="statusFilter == 'all'"
+          >All
+        </span>
+        <span
+          (click)="statusFilter = 'active'"
+          [class.active]="statusFilter == 'active'"
+          >Active
+        </span>
+        <span
+          (click)="statusFilter = 'completed'"
+          [class.active]="statusFilter == 'completed'"
+          >Completed
+        </span>
+      </div>
+      <button (click)="todoService.clearCompletedItems()">Clear Completed</button>
+    </div>
+  </div>

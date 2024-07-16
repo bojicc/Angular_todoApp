@@ -1,0 +1,214 @@
+:host {
+
+    font-size: 0.8125rem;
+
+    .todo-item-input-container {
+        position: relative;
+    }
+
+    .toggle-all-container {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 17px;
+        display: flex;
+
+        .toggle-all-checkbox {
+            width: 20px;
+            appearance: none;
+            align-self: center;
+            height: 20px;
+            cursor: pointer;
+            border: 1px solid;
+            border-color: var(--todo-main-color);
+            border-radius: 50%;
+            transition: all 0.3s;
+
+            &:hover {
+                border-color: transparent;
+                background: linear-gradient(var(--todo-background-color), var(--todo-background-color)) padding-box,
+                    linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+            }
+
+            &:disabled:hover {
+                cursor: not-allowed;
+                border-color: var(--todo-main-color);
+                background: none;
+            }
+        }
+
+        /* Removed individual container for icon
+        .toggle-all {
+            margin-block-end: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;    
+            .icon {
+                border: 1px solid;
+                height: 20px;
+                border-radius: 50%;
+                width: 20px;
+            }
+        } */
+        &.all-selected {
+            .toggle-all-checkbox {
+                background-image: url("/assets/icon-check.svg"), linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+                background-position: center;
+                background-repeat: no-repeat;
+                border: none;
+            }
+        }
+    }
+
+    .todo-item-input {
+        padding: 1rem 1rem 1rem 3.125rem;
+        background-color: var(--todo-background-color);
+        width: 100%;
+        border-radius: 5px;
+        border: none;
+        font-size: 1rem;
+        color: var(--todo-item-color);
+        caret-color: var(--link-active-color);
+
+        &::-webkit-input-placeholder {
+            /* WebKit, Blink, Edge */
+            color: var(--todo-main-color);
+        }
+
+        &:-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 */
+            color: var(--todo-main-color);
+            opacity: 1;
+        }
+
+        &::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            color: var(--todo-main-color);
+            opacity: 1;
+        }
+
+        &:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: var(--todo-main-color);
+        }
+
+        &::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: var(--todo-main-color);
+        }
+
+        &::placeholder {
+            /* Most modern browsers support this now. */
+            color: var(--todo-main-color);
+        }
+    }
+
+    .todo-item-input:focus {
+        outline: none;
+    }
+
+    .todo-item-container {
+        margin-top: 1rem;
+
+        .todo-item {
+            padding: 1rem;
+            background-color: var(--todo-background-color);
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom: 1px solid;
+            width: 100%;
+            position: relative;
+        }
+    }
+
+    .items-info {
+        padding: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--todo-background-color);
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        position: relative;
+
+        button {
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            color: inherit;
+
+            &:hover {
+                color: var(--todo-item-color);
+            }
+        }
+    }
+
+    .items-manage {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+        background-color: var(--todo-background-color);
+        border-radius: 5px;
+        padding: 1rem;
+        font-size: 0.9375rem;
+        font-weight: 700;
+        position: absolute;
+        top: 38px;
+        left: 0px;
+        width: 100%;
+
+        span {
+            cursor: pointer;
+
+            &:not(&.active):hover {
+                color: var(--todo-item-color);
+            }
+
+            &.active {
+                color: var(--link-active-color);
+                cursor: default;
+            }
+        }
+
+    }
+}
+
+@media (min-width: 48rem) {
+    :host {
+        .todo-item-input {
+            padding: 1.25rem 1.25rem 1.25rem 4.5rem;
+            font-size: 1.125rem;
+        }
+
+        .toggle-all-container {
+            left: 1.5rem;
+            .toggle-all-checkbox {
+                height: 24px;
+                width: 24px;
+            }
+        }
+
+        .todo-item-container {
+            .todo-item {
+                padding: 1rem 1.5rem 1rem 1.5rem;
+            }
+        }
+
+        .items-info {
+            padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+            .items-manage {
+                position: static;
+                padding: inherit;
+                margin-top: auto;
+                width: auto;
+            }
+            .items-left {
+                align-self: center;
+            }
+        }
+    }
+}

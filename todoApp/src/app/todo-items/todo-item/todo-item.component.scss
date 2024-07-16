@@ -1,0 +1,91 @@
+:host {
+
+    .item-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .item-checkbox {
+        flex-shrink: 0;
+        align-self: flex-start;
+        width: 20px;
+        height: 20px;
+        border: 1px solid var(--todo-main-color);
+        appearance: none;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: all 0.3s;
+        
+        &:hover {
+            border: 1px solid transparent;
+            background: linear-gradient(var(--todo-background-color),var(--todo-background-color)) padding-box, 
+            linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+        }
+    }
+
+/*     .item-checkbox-toggle {
+        flex-basis: 20px;
+        flex-shrink: 0;
+        margin-block-end: auto;
+        .icon {
+            border: 1px solid;
+            height: 20px;
+            border-radius: 50%;
+        }
+    } */
+
+    .item-name {
+        color: var(--todo-item-color);
+        text-wrap: wrap;
+        cursor: pointer;
+        &:hover {
+            color: var(--todo-item-hover-color);
+        }
+    }
+
+    span {
+        align-self: flex-start;
+        flex-shrink: 0;
+        margin-left: auto;
+        background-color: var(--todo-main-color);
+        -webkit-mask: url("/assets/icon-cross.svg") no-repeat center;
+        mask: url("/assets/icon-cross.svg") no-repeat center;
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+            background-image: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+        }
+    }
+
+    .completed {
+        .item-checkbox {
+            background-image: url("/assets/icon-check.svg"), linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+            background-position: center;
+            background-repeat: no-repeat;
+            border: none;
+        }
+        .item-name {
+            color: var(--todo-item-completed-color);
+            text-decoration: line-through;
+        }
+    }
+
+}
+
+@media (min-width: 48em) {
+    :host {
+        .item-container {
+            gap: 1.5rem;
+        }
+        .item-checkbox {
+            width: 24px;
+            height: 24px;
+        }
+        .item-name {
+            font-size: 1.125rem;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+:host {
+    header {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: space-between;
+        padding-block: 2rem;
+        h1 {
+            color: var(--text-color);
+            letter-spacing: 0.625rem;
+            text-transform: uppercase;
+        }
+    }
+    img {
+        cursor: pointer;
+        &:hover {
+            scale: 1.5;
+        }
+        transition: scale 0.3s;
+    }
+}
+
+@media (min-width: 48em) {
+    :host {
+        header {
+            padding-block-start: 5rem;
+            h1 {
+                font-size: 2.75rem;
+                letter-spacing: 1rem;
+            }
+        }
+    }
+}
